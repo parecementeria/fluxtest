@@ -15,7 +15,14 @@ var ContactActions = {
   update: function(id, updates) {
     AppDispatcher.dispatch({
       actionType: ContactConstants.CONTACT_UPDATE,
-      updates: updates,
+      updates: updates
+    });
+  },
+
+  activate: function(id) {
+    AppDispatcher.dispatch({
+      actionType: ContactConstants.CONTACT_ACTIVATE,
+      id: id
     });
   },
 

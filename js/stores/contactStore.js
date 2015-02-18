@@ -6,6 +6,7 @@ var assign = require('object-assign');
 var CHANGE_EVENT = 'change';
 
 var _contacts = {};
+var _activeContact = 0;
 
 function create(name, info) {
   // Using the current timestamp + random number in place of a real id.
@@ -15,10 +16,15 @@ function create(name, info) {
     name: name,
     info: info
   };
+  _activeContact = id;
 }
 
 function update(id, updates) {
   _contacts[id] = assign({}, _contacts[id], updates);
+}
+
+function activate(id) {
+  _activeContact = id;
 }
 
 function destroy(id) {
@@ -29,6 +35,10 @@ var ContactStore = assign({}, EventEmitter.prototype, {
 
   getAll: function() {
     return _contacts;
+  },
+
+  getActive: function() {
+    return _activeContact;
   },
 
   emitChange: function() {
@@ -69,6 +79,11 @@ AppDispatcher.register(function(action) {
 
     case ContactConstants.CONTACT_DESTROY:
       destroy(action.id);
+      ContactStore.emitChange();
+      break;
+
+    case ContactConstants.CONTACT_ACTIVATE:
+      activate(action.id);
       ContactStore.emitChange();
       break;
 

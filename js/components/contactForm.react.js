@@ -1,10 +1,6 @@
 var React = require('react');
 var ContactActions = require('../actions/contactActions');
 
-var ReactPropTypes = React.PropTypes;
-
-var ENTER_KEY_CODE = 13;
-
 var ContactForm = React.createClass({
 
   getInitialState: function() {
@@ -17,15 +13,21 @@ var ContactForm = React.createClass({
   render: function() {
     return (
       <div className="container">
-        <div className="form-group">
-          <label>Contact name</label>
-          <input type="text" className="form-control" id="name" placeholder="Enter name" onChange={this._onChangeName} />
-        </div>
-        <div className="form-group">
-          <label>Info</label>
-          <input type="text" className="form-control" id="info" placeholder="enter Info" onChange={this._onChangeInfo}/>
-        </div>
-        <button type="submit" className="btn btn-primary" onClick={this._onSave}>add contact</button>
+        <form className="form-horizontal">
+          <div className="form-group">
+            <label className="col-md-2 control-label">Contact name</label>
+            <div className="col-md-10">
+              <input type="text" className="form-control" id="name" placeholder="Enter name" onChange={this._onChangeName} />
+            </div>
+          </div>
+          <div className="form-group">
+            <label className="col-md-2 control-label">Info</label>
+            <div className="col-md-10">
+              <input type="text" className="form-control" id="info" placeholder="enter Info" onChange={this._onChangeInfo}/>
+            </div>
+          </div>
+          <button type="submit" className="btn btn-primary pull-right" onClick={this._onSave}>add contact</button>
+        </form>
       </div>
     );
   },
@@ -42,7 +44,7 @@ var ContactForm = React.createClass({
     });
   },
 
-  _onSave: function(name, info) {
+  _onSave: function() {
     var name = this.state.name.trim();
     var info = this.state.info.trim();
     if (name && info ){

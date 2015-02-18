@@ -6,7 +6,8 @@ var ContactStore = require('../stores/contactStore');
 
 function getState() {
   return {
-    allContacts : ContactStore.getAll()
+    allContacts : ContactStore.getAll(),
+    activeContact : ContactStore.getActive()
   }
 }
 
@@ -29,7 +30,7 @@ var ContactApp = React.createClass({
       <div>
         <Header />
         <ContactForm />
-        <ContactContainer allContacts={this.state.allContacts} />
+        <ContactContainer allContacts={this.state.allContacts} activeContact={this.state.activeContact} />
       </div>
     );
   },
