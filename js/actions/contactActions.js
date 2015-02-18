@@ -1,5 +1,5 @@
 
-var AppDispatcher = require('../dispatcher/AppDispatcher');
+var AppDispatcher = require('../dispatcher/dispatcher');
 var ContactConstants = require('../constants/contactConstants');
 
 var ContactActions = {

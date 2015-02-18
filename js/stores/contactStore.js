@@ -25,7 +25,6 @@ function destroy(id) {
   delete _contacts[id];
 }
 
-
 var ContactStore = assign({}, EventEmitter.prototype, {
 
   getAll: function() {
