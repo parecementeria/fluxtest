@@ -12,24 +12,24 @@ var ContactActions = {
     });
   },
 
-  update: function(id, updates) {
+  update: function(index, updates) {
     AppDispatcher.dispatch({
       actionType: ContactConstants.CONTACT_UPDATE,
       updates: updates
     });
   },
 
-  activate: function(id) {
+  activate: function(index) {
     AppDispatcher.dispatch({
       actionType: ContactConstants.CONTACT_ACTIVATE,
-      id: id
+      index: index
     });
   },
 
-  destroy: function(id) {
+  destroy: function(index) {
     AppDispatcher.dispatch({
       actionType: ContactConstants.CONTACT_DESTROY,
-      id: id
+      index: index
     });
   },
 

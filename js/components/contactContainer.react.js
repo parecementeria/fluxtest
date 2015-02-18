@@ -5,40 +5,32 @@ var ReactPropTypes = React.PropTypes;
 
 var ContactContainer = React.createClass({
 
-  propTypes: {
-    allContacts: ReactPropTypes.object.isRequired,
-  },
-
   render: function() {
-    if (Object.keys(this.props.allContacts).length < 1) {
+    if (this.props.allContacts.length < 1) {
       return null;
     }
     var allContacts = this.props.allContacts;
-    var contacts = [];
     var active = this.props.activeContact;
 
-    for (var key in allContacts) {
-      contacts.push(allContacts[key]);
-    }
     var self = this;
     return (
       <div className="container contact-container">
         <div className="col-md-3 list-group">
-          {contacts.map(function (contact, index) {
+          {allContacts.map(function (contact, index) {
             var classattr = 'list-group-item';
-            if (active == contact.id) {
+            if (active == index) {
               classattr='list-group-item active';
             }
-            return <a className={classattr} key={index} onClick={self._onClick.bind(null, contact.id)}>{contact.name}</a>
+            return <a className={classattr} key={index} onClick={self._onClick.bind(null, index)}>{contact.name}</a>
           })}
         </div>
-        <ContactInfo contact={allContacts[active]}/>
+        <ContactInfo contact={allContacts[active]} index={active} />
       </div>
     );
   },
 
-  _onClick: function(id) {
-    ContactActions.activate(id);
+  _onClick: function(index) {
+    ContactActions.activate(index);
   }
 
 });

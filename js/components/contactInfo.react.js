@@ -15,7 +15,7 @@ var ContactInfo = React.createClass({
             type="button" 
             className="btn btn-danger" 
             aria-label="Left Align"
-            onClick={this._onClick.bind(null, this.props.contact.id)} >
+            onClick={this._onClick.bind(null, this.props.index)} >
               <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
           </button>
           <button 
@@ -31,8 +31,8 @@ var ContactInfo = React.createClass({
     );
   },
 
-  _onClick: function(id) {
-    ContactActions.destroy(id);
+  _onClick: function(index) {
+    ContactActions.destroy(index);
   }
 
 });
