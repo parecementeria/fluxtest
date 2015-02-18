@@ -2,6 +2,7 @@ var Header = require('./header.react');
 var ContactContainer = require('./contactContainer.react');
 var ContactForm = require('./contactForm.react');
 var React = require('react');
+var ContactStore = require('../stores/contactStore');
 
 var ContactApp = React.createClass({
 
