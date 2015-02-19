@@ -23,7 +23,7 @@ var ContactForm = React.createClass({
           <div className="form-group">
             <label className="col-md-2 control-label">Info</label>
             <div className="col-md-10">
-              <input type="text" className="form-control" id="info" placeholder="enter Info" onChange={this._onChangeInfo}/>
+              <textarea type="text" rows="3" className="form-control" id="info" placeholder="enter Info" onChange={this._onChangeInfo}/>
             </div>
           </div>
           <button type="submit" className="btn btn-primary pull-right" onClick={this._onSave}>add contact</button>

@@ -12,10 +12,12 @@ var ContactActions = {
     });
   },
 
-  update: function(index, updates) {
+  update: function(index, name, info) {
     AppDispatcher.dispatch({
       actionType: ContactConstants.CONTACT_UPDATE,
-      updates: updates
+      index: index,
+      name: name,
+      info: info
     });
   },
 

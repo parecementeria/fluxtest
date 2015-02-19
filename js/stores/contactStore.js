@@ -17,8 +17,9 @@ function create(name, info) {
   _activeContact = _contacts.length - 1;
 }
 
-function update(index, updates) {
-  _contacts[id] = assign({}, _contacts[index], updates);
+function update(index, name, info) {
+  var updates = {name: name, info: info};
+  _contacts[index] = updates;
 }
 
 function activate(index) {
@@ -70,8 +71,8 @@ AppDispatcher.register(function(action) {
     case ContactConstants.CONTACT_UPDATE:
       name = action.name.trim();
       info = action.info.trim();
-      if (name !== '' | info !== '') {
-        update(action.index, {name: name, info: info});
+      if (name !== '' && info !== '') {
+        update(action.index, name, info);
       }
       ContactStore.emitChange();
       break;
