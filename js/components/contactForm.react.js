@@ -3,13 +3,6 @@ var ContactActions = require('../actions/contactActions');
 
 var ContactForm = React.createClass({
 
-  getInitialState: function() {
-    return {
-      name: '',
-      info: ''
-    };
-  },
-
   render: function() {
     return (
       <div className="container">
@@ -17,13 +10,13 @@ var ContactForm = React.createClass({
           <div className="form-group">
             <label className="col-md-2 control-label">Contact name</label>
             <div className="col-md-10">
-              <input type="text" className="form-control" id="name" placeholder="Enter name" onChange={this._onChangeName} />
+              <input type="text" ref="createName" className="form-control" id="name" placeholder="Enter name"/>
             </div>
           </div>
           <div className="form-group">
             <label className="col-md-2 control-label">Info</label>
             <div className="col-md-10">
-              <textarea type="text" rows="3" className="form-control" id="info" placeholder="enter Info" onChange={this._onChangeInfo}/>
+              <textarea type="text" ref="createInfo" rows="3" className="form-control" id="info" placeholder="enter Info"/>
             </div>
           </div>
           <a className="btn btn-primary pull-right" onClick={this._onSave}>add contact</a>
@@ -32,21 +25,9 @@ var ContactForm = React.createClass({
     );
   },
 
-  _onChangeName: function(){
-    this.setState({
-      name: event.target.value
-    });
-  },
-  
-  _onChangeInfo: function(){
-    this.setState({
-      info: event.target.value
-    });
-  },
-
   _onSave: function() {
-    var name = this.state.name.trim();
-    var info = this.state.info.trim();
+    var name = this.refs.createName.getDOMNode().value.trim();
+    var info = this.refs.createInfo.getDOMNode().value.trim();
     if (name && info ){
       ContactActions.create(name, info);
     }
