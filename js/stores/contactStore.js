@@ -5,7 +5,7 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var _contacts = [];
+var _contacts = [{name:'kjhda', info:'kjhdfa'},{name:'kdjsbfakjds', info:'kgadsfgsdgfsad'}];
 var _activeContact = 0;
 
 function create(name, info) {
