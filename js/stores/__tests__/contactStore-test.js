@@ -68,6 +68,22 @@ describe('ContactStore', function() {
     expect(all[0].info).toEqual('info1updated');
   });
 
+  it('activate a contact', function() {
+    callback(actionContactCreate);
+    var all = ContactStore.getAll();
+    expect(all.length).toBe(1);
+    var active = ContactStore.getActive();
+    expect(active).toBe(0);
+    callback(actionContactCreate);
+    expect(all.length).toBe(2);
+    active = ContactStore.getActive();
+    expect(active).toBe(1);
+    actionContactActivate.index = 0;
+    callback(actionContactActivate);
+    active = ContactStore.getActive();
+    expect(active).toBe(0);
+  });
+
   it('destroys a contact', function() {
     callback(actionContactCreate);
     var all = ContactStore.getAll();
